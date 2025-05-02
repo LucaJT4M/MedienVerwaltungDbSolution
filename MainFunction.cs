@@ -15,8 +15,8 @@ namespace medienVerwaltungDbSolution
         public UnitOfWork unitOfWork = new(context);
         public MainFunction()
         {
+            // Seed100Songs();
             ClearWholeDb();
-            Seeding();
         }
 
         private readonly Func<DatabaseContext, IEnumerable<Song>> _songCompiledQuery =
@@ -201,22 +201,47 @@ namespace medienVerwaltungDbSolution
         {
             System.Console.WriteLine("List got updated");
         }
-        private async Task Seed500Songs()
+        private void Seed100Songs()
         {
-            System.Console.WriteLine("Seeding 499 Songs");
-            for (int i = 1; i < 500; i++)
+            var interpret = new Interpret();
+            try
             {
+                interpret = context.Interprets.AsNoTracking().FirstOrDefault();
+                if (interpret == null)
+                {
+                    throw new Exception("There is no Interpret");
+                }
+            }
+            catch (System.Exception)
+            {
+                interpret = new Interpret
+                {
+                    FirstName = "Max",
+                    Name = "Mustermann",
+                    BirthDate = new DateTime(2000, 1, 1),
+                    Gender = "Mann"
+                };
+                System.Console.WriteLine("Adding Interpret");
+                unitOfWork.Add(interpret);
+                unitOfWork.BeginTransactionAsync().Wait();
+            }
+
+            System.Console.WriteLine("Seeding 99 Songs");
+            for (int i = 1; i < 100; i++)
+            {
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
                 var newSong = new Song()
                 {
                     Title = "TestSong " + i,
                     Location = "TestLocation " + i,
                     Length = i,
                     InterpretFullName = "Max Mustermann",
-                    InterpretID = 50
+                    InterpretID = interpret.ID
                 };
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
                 unitOfWork.Add(newSong);
             }
-            await unitOfWork.BeginTransactionAsync();
+            unitOfWork.BeginTransactionAsync().Wait();
         }
         private List<Song> PaginationTest(int selectedPage = 1, int itemsPerPage = 10)
         {

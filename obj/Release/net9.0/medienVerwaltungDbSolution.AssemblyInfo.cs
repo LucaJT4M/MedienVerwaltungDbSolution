@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("medienVerwaltungDbSolution")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+44837ee2cd33c6c8108f781898010d2fc6173d85")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+28d139d22a298da8db3b5b0bdf570801a02f3e45")]
 [assembly: System.Reflection.AssemblyProductAttribute("medienVerwaltungDbSolution")]
 [assembly: System.Reflection.AssemblyTitleAttribute("medienVerwaltungDbSolution")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

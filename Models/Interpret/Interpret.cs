@@ -5,7 +5,7 @@ namespace medienVerwaltungDbSolution.Models.Interpret
     sealed public class Interpret
     {
         [Key]
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public string FirstName { get; set; } = string.Empty;
         public string Gender { get; set; } = string.Empty;

@@ -6,7 +6,7 @@ namespace medienVerwaltungDbSolution.Models.Movie
     public class Movie
     {
         [Key]
-        public int ID { get; set; }
+        public int Id { get; set; }
         public int Length { get; set; }
         public int ReleaseYear { get; set; }
         public string? Description { get; set; }

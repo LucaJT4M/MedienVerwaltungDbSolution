@@ -5,7 +5,6 @@ using medienVerwaltungDbSolution.Models.MusicAlbum;
 using medienVerwaltungDbSolution.Models.SearchActorResult;
 using medienVerwaltungDbSolution.Models.SearchResult;
 using medienVerwaltungDbSolution.Models.Song;
-using Microsoft.EntityFrameworkCore.Storage;
 
 namespace medienVerwaltungDbSolution.Models
 {
@@ -20,6 +19,7 @@ namespace medienVerwaltungDbSolution.Models
         public ISearchActorResultRepository Actors { get; }
         void Add<T>(T entity) where T : class;
         void Remove<T>(T entity) where T : class;
+        void Update<T>(T entity) where T : class;
         Task BeginTransactionAsync();
     }
 }
