@@ -15,8 +15,21 @@ namespace medienVerwaltungDbSolution
         public UnitOfWork unitOfWork = new(context);
         public MainFunction()
         {
-            // Seed100Songs();
-            ClearWholeDb();
+            // ClearWholeDb();
+            // Seeding();
+            var newActor = new SearchActorsResult()
+            {
+                FirstName = "Test",
+                LastName = "TEst2",
+                Gender = "man",
+                BirthDate = DateTime.Now,
+                MovieIDs = [1, 2],
+            };
+
+            unitOfWork.Add(newActor);
+            unitOfWork.BeginTransactionAsync().Wait();
+
+            System.Console.WriteLine(context.Actors.AsNoTracking().ToList().Count());
         }
 
         private readonly Func<DatabaseContext, IEnumerable<Song>> _songCompiledQuery =
@@ -24,7 +37,7 @@ namespace medienVerwaltungDbSolution
         context.Songs.AsNoTracking()
         .Select(s => new Song
         {
-            ID = s.ID,
+            Id = s.Id,
             Title = s.Title
         })
         );
@@ -111,7 +124,7 @@ namespace medienVerwaltungDbSolution
                     Location = "Test",
                     InterpretID = 1,
                     InterpretFullName = "Max Mustermann",
-                    SongIDList = { 1, 2 }
+                    SongIdList = { 1, 2 }
                 };
                 unitOfWork.Add(newMusicAlbum);
             }
@@ -236,7 +249,7 @@ namespace medienVerwaltungDbSolution
                     Location = "TestLocation " + i,
                     Length = i,
                     InterpretFullName = "Max Mustermann",
-                    InterpretID = interpret.ID
+                    InterpretID = interpret.Id
                 };
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
                 unitOfWork.Add(newSong);

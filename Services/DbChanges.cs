@@ -36,16 +36,16 @@ namespace medienVerwaltungDbSolution.Services
                         Session = SessionType.Add,
                         Song = entity as Song ?? throw new Exception("Entity is not a Song")
                     };
-                    // newSong.Song.ID = _context.Songs.AsNoTracking().Count() + SongList.Count + 1;
+                    // newSong.Song.Id = _context.Songs.AsNoTracking().Count() + SongList.Count + 1;
 
                     var newSongItem = new SearchResultUOW()
                     {
                         Session = SessionType.Add,
                         SearchResult = new SearchResult()
                         {
-                            // ID = _context.Items.AsNoTracking().Count() + ItemList.Count + 1,
+                            // Id = _context.Items.AsNoTracking().Count() + ItemList.Count + 1,
                             Location = newSong.Song.Location,
-                            MediaId = newSong.Song.ID,
+                            MediaId = newSong.Song.Id,
                             MediaType = MediaType.Song,
                             Title = newSong.Song.Title
                         }
@@ -60,16 +60,16 @@ namespace medienVerwaltungDbSolution.Services
                         Session = SessionType.Add,
                         Book = entity as Book ?? throw new Exception("Entity is not a Book")
                     };
-                    // newBook.Book.ISBN = _context.Books.AsNoTracking().Count() + BookList.Count + 1;
+                    // newBook.Book.Isbn = _context.Books.AsNoTracking().Count() + BookList.Count + 1;
 
                     var newBookItem = new SearchResultUOW()
                     {
                         Session = SessionType.Add,
                         SearchResult = new SearchResult()
                         {
-                            // ID = _context.Items.AsNoTracking().Count() + ItemList.Count + 1,
+                            // Id = _context.Items.AsNoTracking().Count() + ItemList.Count + 1,
                             Location = newBook.Book.Location,
-                            MediaId = newBook.Book.ISBN,
+                            MediaId = newBook.Book.Isbn,
                             MediaType = MediaType.Buch,
                             Title = newBook.Book.Title
                         }
@@ -84,16 +84,16 @@ namespace medienVerwaltungDbSolution.Services
                         Session = SessionType.Add,
                         Movie = entity as Movie ?? throw new Exception("Entity is not a Movie")
                     };
-                    // newMovie.Movie.ID = _context.Movies.AsNoTracking().Count() + MovieList.Count + 1;
+                    // newMovie.Movie.Id = _context.Movies.AsNoTracking().Count() + MovieList.Count + 1;
 
                     var newMovieItem = new SearchResultUOW()
                     {
                         Session = SessionType.Add,
                         SearchResult = new SearchResult()
                         {
-                            // ID = _context.Items.AsNoTracking().Count() + ItemList.Count + 1,
+                            // Id = _context.Items.AsNoTracking().Count() + ItemList.Count + 1,
                             Location = newMovie.Movie.Location,
-                            MediaId = newMovie.Movie.ID,
+                            MediaId = newMovie.Movie.Id,
                             MediaType = MediaType.Film,
                             Title = newMovie.Movie.Title
                         }
@@ -115,7 +115,7 @@ namespace medienVerwaltungDbSolution.Services
                         SearchResult = new SearchResult()
                         {
                             Location = newMusicAlbum.Album.Location,
-                            MediaId = newMusicAlbum.Album.ID,
+                            MediaId = newMusicAlbum.Album.Id,
                             MediaType = MediaType.Musikalbum,
                             Title = newMusicAlbum.Album.Title
                         }
@@ -166,7 +166,7 @@ namespace medienVerwaltungDbSolution.Services
 
                     var newSongItem = new SearchResultUOW()
                     {
-                        SearchResult = itemList.FirstOrDefault(i => i.MediaId == newSong.Song.ID)
+                        SearchResult = itemList.FirstOrDefault(i => i.MediaId == newSong.Song.Id)
                                                 ?? throw new Exception("No Song Item found"),
                         Session = SessionType.Remove
                     };
@@ -184,7 +184,7 @@ namespace medienVerwaltungDbSolution.Services
                     var newBookItem = new SearchResultUOW()
                     {
                         SearchResult = _context.Items.AsNoTracking()
-                                                        .FirstOrDefault(i => i.MediaId == newBook.Book.ISBN)
+                                                        .FirstOrDefault(i => i.MediaId == newBook.Book.Isbn)
                                                         ?? throw new Exception("Book item not found"),
                         Session = SessionType.Remove
                     };
@@ -202,7 +202,7 @@ namespace medienVerwaltungDbSolution.Services
                     var newMovieItem = new SearchResultUOW()
                     {
                         SearchResult = _context.Items.AsNoTracking()
-                                                        .FirstOrDefault(i => i.MediaId == newMovie.Movie.ID)
+                                                        .FirstOrDefault(i => i.MediaId == newMovie.Movie.Id)
                                                         ?? throw new Exception("Movie Item not found"),
                         Session = SessionType.Remove
                     };
@@ -219,7 +219,7 @@ namespace medienVerwaltungDbSolution.Services
                     var newAlbumItem = new SearchResultUOW()
                     {
                         SearchResult = _context.Items.AsNoTracking()
-                                                        .FirstOrDefault(i => i.MediaId == newMusicAlbum.Album.ID)
+                                                        .FirstOrDefault(i => i.MediaId == newMusicAlbum.Album.Id)
                                                         ?? throw new Exception("Album item not found"),
                         Session = SessionType.Remove
                     };
@@ -271,7 +271,7 @@ namespace medienVerwaltungDbSolution.Services
                     {
                         SearchResult = _context.Items
                                                .AsNoTracking()
-                                               .FirstOrDefault(i => i.MediaId == newSong.Song.ID && i.MediaType == MediaType.Song)
+                                               .FirstOrDefault(i => i.MediaId == newSong.Song.Id && i.MediaType == MediaType.Song)
                                                ?? throw new Exception("Songitem was not found"),
                         Session = SessionType.Update
                     };
@@ -291,7 +291,7 @@ namespace medienVerwaltungDbSolution.Services
                     {
                         SearchResult = _context.Items
                                                .AsNoTracking()
-                                               .FirstOrDefault(i => i.MediaId == newBook.Book.ISBN && i.MediaType == MediaType.Buch)
+                                               .FirstOrDefault(i => i.MediaId == newBook.Book.Isbn && i.MediaType == MediaType.Buch)
                                                ?? throw new Exception("Book Item was not found"),
                         Session = SessionType.Update
                     };
@@ -311,7 +311,7 @@ namespace medienVerwaltungDbSolution.Services
                     {
                         SearchResult = _context.Items
                                                .AsNoTracking()
-                                               .FirstOrDefault(i => i.MediaId == newMovie.Movie.ID && i.MediaType == MediaType.Film)
+                                               .FirstOrDefault(i => i.MediaId == newMovie.Movie.Id && i.MediaType == MediaType.Film)
                                                ?? throw new Exception("Movie Item was not found"),
                         Session = SessionType.Update
                     };
@@ -332,7 +332,7 @@ namespace medienVerwaltungDbSolution.Services
                     {
                         SearchResult = _context.Items
                                                .AsNoTracking()
-                                               .FirstOrDefault(i => i.MediaId == newMusicAlbum.Album.ID && i.MediaType == MediaType.Musikalbum)
+                                               .FirstOrDefault(i => i.MediaId == newMusicAlbum.Album.Id && i.MediaType == MediaType.Musikalbum)
                                                ?? throw new Exception("Album Item was not found"),
                         Session = SessionType.Update
                     };
@@ -363,33 +363,33 @@ namespace medienVerwaltungDbSolution.Services
                     break;
             }
         }
-        public async Task<Book> GetBookByIdAsync(int ID)
+        public async Task<Book> GetBookByIdAsync(int Id)
         {
-            return await unitOfWork.Books.GetByIdAsync(ID) ?? throw new Exception("Book not found");
+            return await unitOfWork.Books.GetByIdAsync(Id) ?? throw new Exception("Book not found");
         }
-        public async Task<Song> GetSongByIdAsync(int ID)
+        public async Task<Song> GetSongByIdAsync(int Id)
         {
-            return await unitOfWork.Songs.GetByIdAsync(ID) ?? throw new Exception("Song not found");
+            return await unitOfWork.Songs.GetByIdAsync(Id) ?? throw new Exception("Song not found");
         }
-        public async Task<Movie> GetMovieByIdAsync(int ID)
+        public async Task<Movie> GetMovieByIdAsync(int Id)
         {
-            return await unitOfWork.Movies.GetByIdAsync(ID) ?? throw new Exception("Movie not found");
+            return await unitOfWork.Movies.GetByIdAsync(Id) ?? throw new Exception("Movie not found");
         }
-        public async Task<MusicAlbum> GetMusicAlbumByIdAsync(int ID)
+        public async Task<MusicAlbum> GetMusicAlbumByIdAsync(int Id)
         {
-            return await unitOfWork.MusicAlbums.GetByIdAsync(ID) ?? throw new Exception("MusicAlbum not found");
+            return await unitOfWork.MusicAlbums.GetByIdAsync(Id) ?? throw new Exception("MusicAlbum not found");
         }
-        public async Task<Interpret> GetInterpretByIdAsync(int ID)
+        public async Task<Interpret> GetInterpretByIdAsync(int Id)
         {
-            return await unitOfWork.Interprets.GetByIdAsync(ID) ?? throw new Exception("Interpret not found");
+            return await unitOfWork.Interprets.GetByIdAsync(Id) ?? throw new Exception("Interpret not found");
         }
-        public async Task<SearchResult> GetItemByIdAsync(int ID)
+        public async Task<SearchResult> GetItemByIdAsync(int Id)
         {
-            return await unitOfWork.Items.GetByIdAsync(ID) ?? throw new Exception("Item not found");
+            return await unitOfWork.Items.GetByIdAsync(Id) ?? throw new Exception("Item not found");
         }
-        public async Task<SearchActorsResult> GetActorByIdAsync(int ID)
+        public async Task<SearchActorsResult> GetActorByIdAsync(int Id)
         {
-            return await unitOfWork.Actors.GetByIdAsync(ID) ?? throw new Exception("Actors not found");
+            return await unitOfWork.Actors.GetByIdAsync(Id) ?? throw new Exception("Actors not found");
         }
         private async Task AddToDb()
         {
@@ -636,22 +636,22 @@ namespace medienVerwaltungDbSolution.Services
         {
             var songs = await _context.Songs.AsNoTracking().Select(s => new Song
             {
-                ID = s.ID,
+                Id = s.Id,
                 Title = s.Title
             }).ToListAsync();
             var books = await _context.Books.AsNoTracking().Select(b => new Book
             {
-                ISBN = b.ISBN,
+                Isbn = b.Isbn,
                 Title = b.Title
             }).ToListAsync();
             var movies = await _context.Movies.AsNoTracking().Select(m => new Movie
             {
-                ID = m.ID,
+                Id = m.Id,
                 Title = m.Title
             }).ToListAsync();
             var musicAlbums = await _context.MusicAlbums.AsNoTracking().Select(ma => new MusicAlbum
             {
-                ID = ma.ID,
+                Id = ma.Id,
                 Title = ma.Title
             }).ToListAsync();
 
@@ -663,25 +663,25 @@ namespace medienVerwaltungDbSolution.Services
                     {
                         case MediaType.Song:
                             var songWID = songs.FirstOrDefault(s => s.Title == item.SearchResult.Title) ?? throw new Exception("Song for Item not found");
-                            item.SearchResult.MediaId = songWID.ID;
+                            item.SearchResult.MediaId = songWID.Id;
                             await unitOfWork.Items.AddAsync(item.SearchResult);
                             break;
 
                         case MediaType.Buch:
                             var bookWID = books.FirstOrDefault(s => s.Title == item.SearchResult.Title) ?? throw new Exception("Book for Item not found");
-                            item.SearchResult.MediaId = bookWID.ISBN;
+                            item.SearchResult.MediaId = bookWID.Isbn;
                             await unitOfWork.Items.AddAsync(item.SearchResult);
                             break;
 
                         case MediaType.Film:
                             var movieWID = movies.FirstOrDefault(s => s.Title == item.SearchResult.Title) ?? throw new Exception("Movie for Item not found");
-                            item.SearchResult.MediaId = movieWID.ID;
+                            item.SearchResult.MediaId = movieWID.Id;
                             await unitOfWork.Items.AddAsync(item.SearchResult);
                             break;
 
                         case MediaType.Musikalbum:
                             var albumWID = musicAlbums.FirstOrDefault(s => s.Title == item.SearchResult.Title) ?? throw new Exception("Album for Item not found");
-                            item.SearchResult.MediaId = albumWID.ID;
+                            item.SearchResult.MediaId = albumWID.Id;
                             await unitOfWork.Items.AddAsync(item.SearchResult);
                             break;
 

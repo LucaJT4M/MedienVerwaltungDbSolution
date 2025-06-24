@@ -13,7 +13,7 @@ namespace medienVerwaltungDbSolution.Funcitons
             _context = context;
             foreach (Song song in GetSongs())
             {
-                System.Console.WriteLine("ID: " + song.ID + " Title: " + song.Title);
+                System.Console.WriteLine("Id: " + song.Id + " Title: " + song.Title);
             }
         }
         private List<Song> GetSongs()

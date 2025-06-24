@@ -89,6 +89,11 @@ namespace medienVerwaltungDbSolution.Services
                     await Interprets.AddAsync(newInterpret);
                     break;
 
+                case SearchActorsResult:
+                    var newActor = entity as SearchActorsResult ?? throw new Exception("Entity is not a Actor");
+                    await Actors.AddAsync(newActor);
+                    break;
+
                 default:
                     break;
             }
@@ -144,6 +149,11 @@ namespace medienVerwaltungDbSolution.Services
                 case Interpret:
                     var toRemoveInterpret = entity as Interpret ?? throw new Exception("Entity is not a Interpret");
                     Interprets.Remove(toRemoveInterpret);
+                    break;
+
+                case SearchActorsResult:
+                    var toRemoveActor = entity as SearchActorsResult ?? throw new Exception("Entity is not a Actor");
+                    Actors.Remove(toRemoveActor);
                     break;
 
                 case SearchResult:
